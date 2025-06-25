@@ -1,5 +1,5 @@
 #Aqui deben ir las importaciones, verificar rutas relativas
-
+from historial.func_historial import agregar_al_historial, mostrar_historial, borrar_historial
 
 historial = []
 
@@ -22,12 +22,19 @@ def menu():
     print("10. Borrar historial completo")
     return input("Selecciona una opción (1-10): ")
 
-
 # programa principal
 while True:
     opcion = menu()
 
     if opcion == '1':
         print("hola")
+    
+
+
+    elif opcion == '5':
+        mostrar_historial()
+    elif opcion == '6':
+        borrar_historial()
+
     else:
         print("Opción no válida. Intenta nuevamente.")
