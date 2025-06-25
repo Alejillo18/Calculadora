@@ -7,190 +7,202 @@ INTEGRANTES:
  Facundo Castillo
  Lautaro Gutierrez Lardit
 
+📘 Resumen del Proyecto
+Nombre del sistema: Calculadora Científica PyCalc
+Tecnología principal: Python 3.x
+Frameworks/Bibliotecas sugeridas: Tkinter (GUI), NumPy/SymPy (operaciones matemáticas), Pytest (pruebas)
+Público objetivo: Usuarios que necesiten realizar cálculos científicos complejos en una aplicación de escritorio o consola.
+Modo de ejecución: Interfaz gráfica y línea de comandos (CLI)
 
+🧩 Módulos Funcionales
+Operaciones Aritméticas Básicas
 
+Funciones Científicas (Trigonometría, logaritmos, exponenciales)
 
+Funciones Avanzadas (Derivadas, integrales, simplificación simbólica)
 
+Gestión de errores y validaciones
 
+Historial de operaciones
 
+Entrada de expresiones complejas
 
+Interfaz de usuario (CLI y GUI)
 
+🧠 Historias de Usuario y Criterios de Aceptación
+🟩 Historia 1: Cálculos Aritméticos Básicos
+Como usuario,
+quiero poder realizar operaciones básicas como suma, resta, multiplicación y división,
+para resolver cálculos cotidianos de manera rápida.
 
-🧩 Épica General: Módulo de Calculadora Científica
-Como usuario técnico o estudiante, quiero realizar cálculos matemáticos avanzados, para resolver problemas científicos, académicos o de ingeniería de manera precisa.
+✅ Criterios de Aceptación
+GIVEN el usuario ha ingresado una expresión como 3 + 2
 
-📝 Historias de Usuario (User Stories)
-1. Realizar operaciones aritméticas básicas
-Historia de Usuario
-Como usuario, quiero realizar operaciones básicas como suma, resta, multiplicación y división para efectuar cálculos simples.
+WHEN presiona el botón "=" o ejecuta el cálculo
 
-Criterios de Aceptación
+THEN el resultado debe ser 5
 
- Se pueden introducir números positivos y negativos.
+AND debe manejar divisiones por cero con un mensaje de error adecuado
 
- Soporta decimales (coma o punto según localización).
+🟩 Historia 2: Funciones Trigonométricas
+Como usuario,
+quiero usar funciones como sin(x), cos(x), tan(x) y sus inversas,
+para poder realizar cálculos trigonométricos.
 
- El resultado se actualiza tras presionar el botón "=".
+✅ Criterios de Aceptación
+GIVEN el usuario ha ingresado sin(π/2)
 
- Se maneja la división por cero con un mensaje de error claro.
+WHEN ejecuta el cálculo
 
-Notas Técnicas
+THEN el resultado debe ser 1
 
-Utilizar librerías de precisión decimal.
+Soporte para ingresar valores en grados y radianes
 
-Localización del formato numérico (Ej: 3,14 vs 3.14).
+Mensajes de error si se ingresan valores fuera del dominio (ej. tan(π/2))
 
-2. Realizar operaciones científicas avanzadas
-Historia de Usuario
-Como usuario avanzado, quiero usar funciones científicas como seno, coseno, tangente, logaritmo, exponencial, raíces para resolver ecuaciones complejas.
+🟩 Historia 3: Funciones Logarítmicas y Exponenciales
+Como usuario,
+quiero calcular logaritmos en base 10, base e y potencias,
+para resolver problemas científicos y estadísticos.
 
-Criterios de Aceptación
+✅ Criterios de Aceptación
+log(100) devuelve 2
 
- Disponibilidad de funciones trigonométricas en radianes y grados.
+ln(e) devuelve 1
 
- Logaritmo natural (ln) y logaritmo base 10 (log).
+2^3 devuelve 8
 
- Exponenciales (e^x) y potencia (x^y).
+Mensajes claros para entradas negativas en logaritmos
 
- Raíz cuadrada y enésima raíz.
+🟩 Historia 4: Derivadas e Integrales
+Como estudiante de cálculo,
+quiero poder obtener derivadas e integrales de funciones simbólicas,
+para resolver problemas matemáticos avanzados.
 
- Se puede cambiar entre grados/radianes.
+✅ Criterios de Aceptación
+d/dx(x^2) devuelve 2x
 
- Se muestra el resultado con precisión configurable.
+∫ x dx devuelve x^2/2 + C
 
-Notas Técnicas
+Debe soportar funciones como sin(x^2) o e^x
 
-Validar entradas para evitar raíces de negativos si no hay soporte para números complejos.
+Errores claros si se ingresa una expresión no derivable
 
-3. Soporte para paréntesis y jerarquía de operaciones
-Historia de Usuario
-Como usuario, quiero usar paréntesis en mis expresiones para controlar la prioridad de las operaciones.
+🟩 Historia 5: Simplificación y Evaluación de Expresiones
+Como usuario,
+quiero ingresar expresiones algebraicas simbólicas,
+para evaluarlas o simplificarlas.
 
-Criterios de Aceptación
+✅ Criterios de Aceptación
+simplify((x^2 - 1)/(x - 1)) debe devolver x + 1
 
- Se pueden anidar múltiples niveles de paréntesis.
+evaluate(x=2) sobre x^2 + 2x devuelve 8
 
- La jerarquía respeta PEMDAS/BODMAS.
+🟩 Historia 6: Manejo de Errores
+Como usuario,
+quiero recibir mensajes claros cuando algo sale mal,
+para entender y corregir mis entradas.
 
- El sistema muestra errores si los paréntesis están mal balanceados.
+✅ Criterios de Aceptación
+Error por división por cero
 
-Notas Técnicas
+Error por entrada inválida (ej: 5++2)
 
-Se sugiere usar un parser de expresiones matemáticas (Ej: Shunting Yard Algorithm).
+Mensajes amigables como "Entrada no válida. Revise su fórmula."
 
-4. Historial de operaciones
-Historia de Usuario
-Como usuario frecuente, quiero ver el historial de operaciones realizadas para revisar o reutilizar cálculos anteriores.
+🟩 Historia 7: Historial de Operaciones
+Como usuario frecuente,
+quiero ver un historial de cálculos anteriores,
+para revisar mis operaciones pasadas.
 
-Criterios de Aceptación
+✅ Criterios de Aceptación
+Debe guardar las últimas N operaciones
 
- Se listan las operaciones y resultados anteriores.
+Posibilidad de volver a usar una expresión anterior
 
- Se puede seleccionar una operación pasada y reutilizarla.
+🟩 Historia 8: Interfaz Gráfica (GUI)
+Como usuario no técnico,
+quiero una interfaz amigable con botones y pantalla,
+para facilitar el uso sin recordar sintaxis.
 
- Se puede borrar el historial completo o por ítem.
+✅ Criterios de Aceptación
+Botones para funciones y números
 
-Notas Técnicas
+Campo de entrada y pantalla de salida
 
-Almacenamiento en memoria local o persistente (por sesión o usuario).
+Soporte para teclado numérico
 
-Posibilidad de exportar historial en formato texto o CSV (opcional).
+Interfaz responsiva y clara
 
-5. Manejo de constantes científicas
-Historia de Usuario
-Como usuario científico, quiero acceder rápidamente a constantes como π, e, g para realizar cálculos con valores estandarizados.
+🟩 Historia 9: Modo Consola (CLI)
+Como usuario técnico,
+quiero poder usar la calculadora desde la terminal,
+para facilitar su integración con scripts y otros programas.
 
-Criterios de Aceptación
+✅ Criterios de Aceptación
+Entrada por texto (> calc "sin(pi/4) + log(10)")
 
- π (pi), e (número de Euler), g (gravedad), c (velocidad de la luz) disponibles.
+Salida clara en consola
 
- Se pueden insertar con un botón o mediante teclado.
+Soporte para modo interactivo y modo por línea de comandos
 
-Notas Técnicas
+⚙️ Notas Técnicas / Consideraciones de Análisis Sistémico
+🔧 Arquitectura Sugerida
+Modelo MVC
 
-Configurar la precisión de cada constante.
+Modelo: Procesamiento con SymPy / NumPy
 
-Agrupar constantes por categoría (matemáticas, física, etc.).
+Vista: GUI (Tkinter) y CLI
 
-6. Modo de notación científica
-Historia de Usuario
-Como usuario académico, quiero ver y usar notación científica para trabajar con números muy grandes o pequeños.
+Controlador: Coordinación de entrada/salida y validaciones
 
-Criterios de Aceptación
+📦 Modularidad
+core/arithmetic.py: Suma, resta, etc.
 
- El usuario puede elegir mostrar resultados en notación científica.
+core/scientific.py: Trigonometría, log, etc.
 
- Se pueden ingresar números usando E o e (Ej: 1.23e-5).
+core/symbolic.py: Derivadas, integrales
 
- Botón para alternar entre notación normal y científica.
+ui/gui.py: Interfaz gráfica
 
-Notas Técnicas
+ui/cli.py: Consola
 
-Utilizar formatos estándar IEEE o similares.
+utils/errors.py: Gestión de errores personalizados
 
-Opciones de configuración de precisión de dígitos.
+🧪 Testing
+Usar pytest para pruebas unitarias y de integración
 
-7. Conversión entre grados y radianes
-Historia de Usuario
-Como usuario que trabaja con ángulos, quiero cambiar entre grados y radianes para obtener resultados correctos en funciones trigonométricas.
+Cobertura mínima del 90%
 
-Criterios de Aceptación
+Tests para:
 
- Botón claro para alternar entre grados y radianes.
+Casos normales
 
- Estado visible del modo actual.
+Casos límite
 
- Las funciones trigonométricas se comportan según el modo activo.
+Manejo de errores
 
-Notas Técnicas
+Performance en expresiones largas
 
-Estado debe mantenerse incluso si se reinicia la calculadora (opcional).
+🔁 Entradas/Salidas
+Entrada: string, botón o teclado
 
-8. Validación de entradas y manejo de errores
-Historia de Usuario
-Como usuario, quiero recibir mensajes claros si hay un error en la expresión para entender qué corregir.
+Salida: string con resultado o mensaje de error
 
-Criterios de Aceptación
+Internamente: manipulación simbólica con SymPy, cálculo con NumPy
 
- Error de sintaxis (Ej: “2+*5”) produce un mensaje claro.
 
- División por cero no causa crash.
 
- Paréntesis mal cerrados se indican visualmente.
 
-Notas Técnicas
 
-Se recomienda validación incremental conforme se ingresa la expresión.
 
-9. Interfaz adaptable y accesible
-Historia de Usuario
-Como usuario con diferentes dispositivos, quiero una interfaz responsiva y accesible para usar la calculadora en móviles, tablets y PCs.
 
-Criterios de Aceptación
 
- Botones accesibles en pantalla táctil.
 
- Contraste adecuado para visibilidad.
 
- Navegación por teclado y compatibilidad con lectores de pantalla.
 
-Notas Técnicas
 
-Aplicar estándares de accesibilidad (WCAG 2.1).
-
-Framework sugerido: React con Tailwind para adaptabilidad.
-
-🧠 Consideraciones del Análisis Sistémico
-Subsistemas involucrados:
-
-Subsistema	Descripción
-Parser matemático	Interpretación de expresiones complejas
-Motor de cálculo	Operaciones básicas, científicas, manejo de errores
-UI/UX responsiva	Interfaz accesible en cualquier dispositivo
-Persistencia local	Historial, configuración del modo (grados/radianes, notación científica)
-Internacionalización (opcional)	Soporte multilenguaje, símbolos decimales y separadores
-
-CHAT DE LAS HISTORIAS DE USUARIO CON CHATGPT= https://chatgpt.com/share/685c736d-5e4c-8003-98ea-fa6338a50087
+CHAT DE LAS HISTORIAS DE USUARIO CON CHATGPT= https://chatgpt.com/share/685c74d5-2ee0-8003-a0cf-c86963de2271
 
 CHAT DE LA ISSUE DE VICENTE YBALO= https://chatgpt.com/share/684a1780-0a98-8003-a813-3a867b5e661e
 CHAT DE LA ISSUE DE FACUNDO CASTILLO= https://chatgpt.com/share/684a16c9-39b4-8009-b1eb-8849fb5a2996
