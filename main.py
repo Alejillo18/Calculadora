@@ -1,9 +1,7 @@
 #Aqui deben ir las importaciones, verificar rutas relativas
-<<<<<<< Operaciones_Avanzadas
-from operaciones.FuncionesAvanzadas import potencia,raizCuadrada,raizenesima,logbase10,lognatural
-=======
-from historial.func_historial import agregar_al_historial, mostrar_historial, borrar_historial
->>>>>>> Historial_Operaciones
+from operaciones.FuncionesAvanzadas import potencia,raizCuadrada,raizenesima,logbase10,lognatural;
+from historial.func_historial import agregar_al_historial, mostrar_historial, borrar_historial;
+
 
 historial = []
 
@@ -35,8 +33,6 @@ while True:
 
     if opcion == '1':
         print("hola")
-<<<<<<< Operaciones_Avanzadas
-
 
     elif opcion == '7':
         lognatural()
@@ -48,15 +44,11 @@ while True:
         logbase10()
     elif opcion == '11':
         raizenesima()
-=======
-    
 
-
-    elif opcion == '5':
+    elif opcion == '12':
         mostrar_historial()
-    elif opcion == '6':
+    elif opcion == '13':
         borrar_historial()
 
->>>>>>> Historial_Operaciones
     else:
         print("Opción no válida. Intenta nuevamente.")
