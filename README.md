@@ -196,15 +196,30 @@ Internamente: manipulación simbólica con SymPy, cálculo con NumPy
 
 
 
-
-
-
-
-
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![Tkinter](https://img.shields.io/badge/GUI-Tkinter-green)
+![SymPy](https://img.shields.io/badge/Math-SymPy%2FNumPy-orange)
+![Pytest](https://img.shields.io/badge/Testing-Pytest-success)
+![Licencia](https://img.shields.io/badge/Licencia-MIT-yellow)
 
 CHAT DE LAS HISTORIAS DE USUARIO CON CHATGPT= https://chatgpt.com/share/685c74d5-2ee0-8003-a0cf-c86963de2271
 
-CHAT DE LA ISSUE DE VICENTE YBALO= https://chatgpt.com/share/684a1780-0a98-8003-a813-3a867b5e661e
-CHAT DE LA ISSUE DE FACUNDO CASTILLO= https://chatgpt.com/share/684a16c9-39b4-8009-b1eb-8849fb5a2996
-CHAT DE LA ISSUE DE LAUTARO GUTIERREZ LARDIT: https://chatgpt.com/c/685c85a3-1174-800c-b52b-584a6d471925
-CHAT DE LA ISSUE DE OVIEDO ALEJO : https://chatgpt.com/share/685c7b8f-7db8-8012-a66f-a03098d14854
+| Integrante                | Link IA |
+|---------------------------|---------|
+| Vicente Ybalo             | https://chatgpt.com/share/684a1780-0a98-8003-a813-3a867b5e661e |
+| Alejo Oviedo              | https://chatgpt.com/share/685c7b8f-7db8-8012-a66f-a03098d14854 |
+| Cristian Sasinka          | https://chatgpt.com/share/685c74d5-2ee0-8003-a0cf-c86963de2271 |
+| Facundo Castillo          | https://chatgpt.com/share/684a16c9-39b4-8009-b1eb-8849fb5a2996 |
+| Lautaro Gutierrez Lardit  | https://chatgpt.com/c/685c85a3-1174-800c-b52b-584a6d471925 |
+
+
+🚀 Futuras Mejoras
+Versión móvil para Android (nativa)
+
+Gráficos de funciones 2D/3D
+
+Soporte para variables persistentes
+
+Exportación de historial a CSV
+
+Modo programación (scripts personalizados)
