@@ -282,13 +282,13 @@ def iniciar_interfaz_grafica():
                     messagebox.showerror("Error", "Los límites deben ser números válidos")
                     return
                     
-                exp_var.set(f"∫({expr},{var},{lower},{upper})")
+                exp_var.set(f"integral({expr},{var},{lower},{upper})")
             else:
                 if not expr or not var:
                     messagebox.showerror("Error", "Expresión y variable son obligatorias")
                     return
                     
-                exp_var.set(f"∫({expr},{var})")
+                exp_var.set(f"integral({expr},{var})")
             
             dialog.destroy()
         
