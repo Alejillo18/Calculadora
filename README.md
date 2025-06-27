@@ -223,3 +223,4 @@ Soporte para variables persistentes
 Exportación de historial a CSV
 
 Modo programación (scripts personalizados)
+
