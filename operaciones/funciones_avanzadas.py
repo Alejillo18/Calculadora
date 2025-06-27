@@ -55,19 +55,38 @@ def operaciones_matriciales(matrices, operacion):
 def calculos_estadisticos(datos, operacion):
     """Realiza cálculos estadísticos"""
     try:
-        datos = [float(d) for d in datos]
-        if operacion == 'media':
-            return np.mean(datos)
-        elif operacion == 'mediana':
-            return np.median(datos)
-        elif operacion == 'desv':
-            return np.std(datos)
-        elif operacion == 'var':
-            return np.var(datos)
+        if operacion in ['media', 'mediana', 'desv', 'var']:
+            # Para estas operaciones, datos es una lista de números
+            datos = [float(d) for d in datos]
+            if operacion == 'media':
+                return np.mean(datos)
+            elif operacion == 'mediana':
+                return np.median(datos)
+            elif operacion == 'desv':
+                return np.std(datos, ddof=1)  # Desviación muestral
+            elif operacion == 'var':
+                return np.var(datos, ddof=1)  # Varianza muestral
+
         elif operacion == 'reg_lin':
-            x = np.array(range(len(datos)))
-            coefs = np.polyfit(x, datos, 1)
-            return [float(coef) for coef in coefs]
+            # Asegurarse de que los datos son arrays 1D
+            x = np.array(datos[0]).flatten()
+            y = np.array(datos[1]).flatten()
+            
+            # Ajuste lineal
+            coefs = np.polyfit(x, y, 1)
+            slope = float(coefs[0])  # Convertir a float nativo
+            intercept = float(coefs[1])  # Convertir a float nativo
+            
+            # Calcular correlación si hay suficientes datos
+            if len(x) > 2:
+                correlation_matrix = np.corrcoef(x, y)
+                r = float(correlation_matrix[0, 1])
+            else:
+                # Para 2 puntos, la correlación es perfecta
+                r = 1.0 if slope >= 0 else -1.0
+            
+            return {'slope': slope, 'intercept': intercept, 'r': r}
+
     except Exception as e:
         raise ValueError(f"Error en cálculo estadístico: {str(e)}")
     

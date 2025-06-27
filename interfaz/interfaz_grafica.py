@@ -476,10 +476,10 @@ def iniciar_interfaz_grafica():
                 if not datos_str:
                     messagebox.showerror("Error", "Ingrese datos")
                     return
-                    
-                datos = [float(x) for x in datos_str.split(',')]
-                operacion = op_est_var.get().lower()
-                
+            
+                datos_lista = [float(x) for x in datos_str.split(',')]
+                operacion = op_est_var.get().strip().lower()
+        
                 op_map = {
                     'media': 'media',
                     'mediana': 'mediana',
@@ -487,20 +487,40 @@ def iniciar_interfaz_grafica():
                     'varianza': 'var',
                     'regresión lineal': 'reg_lin'
                 }
-                
-                resultado = calculos_estadisticos(datos, op_map[operacion])
-                if operacion == 'reg_lin':
-                    resultado_texto = format_regresion(resultado)  # Formatea la regresión
-                else:
-                    resultado_texto = str(resultado)
-                    resultado_est_var.set(resultado_texto)
-                # Guardar en historial
-                guardar_operacion(f"Estadística: {operacion}", str(resultado))
-                actualizar_historial(historial_text)
-            except Exception as e:
-                messagebox.showerror("Error", str(e))
         
+                # Verificación especial para regresión lineal
+                if operacion == 'regresión lineal':
+                    if len(datos_lista) < 4:
+                        messagebox.showerror("Error", "Para regresión lineal se necesitan al menos 2 pares de datos (4 valores)")
+                        return
+                    if len(datos_lista) % 2 != 0:
+                        messagebox.showerror("Error", "Para regresión lineal ingrese pares X,Y (ej: 1,2,3,4,5,6)")
+                        return
+            
+                    # Crear pares (x,y)
+                    pares = [(datos_lista[i], datos_lista[i+1]) for i in range(0, len(datos_lista), 2)]
+                    x = [par[0] for par in pares]
+                    y = [par[1] for par in pares]
+            
+                    resultado = calculos_estadisticos([x, y], op_map[operacion])
+            
+                    # Formatear resultado de regresión
+                    resultado_texto = (f"Ecuación: y = {resultado['slope']:.4f}x + {resultado['intercept']:.4f}\n"
+                                    f"Coeficiente de correlación (r): {resultado['r']:.4f}")
+                else:
+                    resultado = calculos_estadisticos(datos_lista, op_map[operacion])
+                    resultado_texto = f"Resultado: {resultado:.4f}"
+        
+                resultado_est_var.set(resultado_texto)
+                guardar_operacion(f"Estadística[{operacion}]: {datos_str}", resultado_texto)
+                actualizar_historial(historial_text)
+        
+            except Exception as e:
+                messagebox.showerror("Error", f"Error en cálculo: {str(e)}")
+
         ttk.Button(frame_est, text="Calcular", command=calcular_est).grid(row=3, column=0, columnspan=2, pady=10)
+        
+        
         
         # Pestaña para bases numéricas
         frame_base = ttk.Frame(notebook)
