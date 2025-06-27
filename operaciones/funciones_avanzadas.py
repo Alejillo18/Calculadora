@@ -66,9 +66,17 @@ def calculos_estadisticos(datos, operacion):
             return np.var(datos)
         elif operacion == 'reg_lin':
             x = np.array(range(len(datos)))
-            return list(np.polyfit(x, datos, 1))
+            coefs = np.polyfit(x, datos, 1)
+            return [float(coef) for coef in coefs]
     except Exception as e:
         raise ValueError(f"Error en cálculo estadístico: {str(e)}")
+    
+def format_regresion(coeficientes):
+    """Formatea los coeficientes de regresión como una ecuación legible"""
+    pendiente = coeficientes[0]
+    intercepto = coeficientes[1]
+    signo = '+' if intercepto >= 0 else '-'
+    return f"y = {pendiente:.4f}x {signo} {abs(intercepto):.4f}"
 
 def calculos_base(numero, base_entrada, base_salida):
     """Convierte entre bases numéricas"""

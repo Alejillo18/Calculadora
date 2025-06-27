@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox, scrolledtext, filedialog, Menu
 import numpy as np
 from operaciones.operacionesBasicas import calcular_expresion
-from operaciones.funciones_avanzadas import resolver_sistema_ecuaciones, operaciones_matriciales, calculos_estadisticos, calculos_base
+from operaciones.funciones_avanzadas import resolver_sistema_ecuaciones, operaciones_matriciales, calculos_estadisticos, calculos_base, format_regresion
 from historial.func_historial import guardar_operacion, cargar_historial, limpiar_historial, exportar_pdf
 
 def mostrar_resultado_cli(expresion, resultado):
@@ -489,7 +489,11 @@ def iniciar_interfaz_grafica():
                 }
                 
                 resultado = calculos_estadisticos(datos, op_map[operacion])
-                resultado_est_var.set(str(resultado))
+                if operacion == 'reg_lin':
+                    resultado_texto = format_regresion(resultado)  # Formatea la regresión
+                else:
+                    resultado_texto = str(resultado)
+                    resultado_est_var.set(resultado_texto)
                 # Guardar en historial
                 guardar_operacion(f"Estadística: {operacion}", str(resultado))
                 actualizar_historial(historial_text)
