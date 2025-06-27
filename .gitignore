@@ -1,0 +1,6 @@
+.pytest_cache/
+historial/__pycache__
+interfaz/__pycache__
+operaciones/__pycache__
+tests/__pycache__
+historial_operaciones.json
